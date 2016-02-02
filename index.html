@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="budgetApp">
 <head>
     <title>Budget App</title>
 
@@ -25,30 +25,36 @@
         </div>
         <div class="table-container">
             <table class="table table-hover">
-                <tbody>
-                    <tr class="red">
-                        <td>4th @13:31</td>
-                        <td>Pizza</td>
-                        <td>-20.00</td>
-                        <td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
-                    </tr>
-                    <tr class="red">
-                        <td>2nd @21:18</td>
-                        <td>Iesire in oras</td>
-                        <td>-40.00</td>
-                        <td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
-                    </tr>
-                    <tr class="red">
-                        <td>1st @14:34</td>
-                        <td>Cumparaturi</td>
-                        <td>-132.54</td>
-                        <td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
-                    </tr>
-                    <tr class="green">
-                        <td>1st @10:00</td>
-                        <td>Salariu</td>
-                        <td>+2,500.00</td>
-                        <td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
+                <tbody ng-controller="addRow">
+                    <!--<tr class="red">-->
+                        <!--<td>4th @13:31</td>-->
+                        <!--<td>Pizza</td>-->
+                        <!--<td>-20.00</td>-->
+                        <!--<td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>-->
+                    <!--</tr>-->
+                    <!--<tr class="red">-->
+                        <!--<td>2nd @21:18</td>-->
+                        <!--<td>Iesire in oras</td>-->
+                        <!--<td>-40.00</td>-->
+                        <!--<td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>-->
+                    <!--</tr>-->
+                    <!--<tr class="red">-->
+                        <!--<td>1st @14:34</td>-->
+                        <!--<td>Cumparaturi</td>-->
+                        <!--<td>-132.54</td>-->
+                        <!--<td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>-->
+                    <!--</tr>-->
+                    <!--<tr class="green">-->
+                        <!--<td>1st @10:00</td>-->
+                        <!--<td>Salariu</td>-->
+                        <!--<td>+2,500.00</td>-->
+                        <!--<td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>-->
+                    <!--</tr>-->
+                    <tr ng-repeat="d in data">
+                        <td>{{ d.date }}</td>
+                        <td>{{ d.description }}</td>
+                        <td>{{ d.amount | currency:""}}</td>
+                        <td width="40"><button ng-click="deleteRow($index)" type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -70,5 +76,12 @@
             </ul>
         </nav>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://momentjs.com/downloads/moment.js"></script>
+    <script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
