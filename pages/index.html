@@ -1,5 +1,5 @@
 
-<body ng-controller="BalanceController">
+<body ng-controller="HomeCtrl">
 <div class="container container-main">
     <div class="page-header">
         <h1>2,174.50 <small>RON</small></h1>
@@ -14,18 +14,18 @@
     <div class="table-container">
         <table class="table table-hover">
             <tbody>
-            <tr ng-repeat="d in data">
-                <td>{{ d.date }}</td>
-                <td>{{ d.description }}</td>
-                <td>{{ d.amount | currency:""}}</td>
-                <td width="40"><button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
+            <tr ng-repeat="item in data">
+                <td>{{ item.date }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.amount | currency:""}}</td>
+                <td width="40"><button ng-click="deleteTransaction(item.id)" type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
             </tr>
             </tbody>
         </table>
     </div>
     <div class="buttons">
         <a href="#receive" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Receive</a>
-        <a href="#add" class="btn btn-default right">Spend <i class="glyphicon glyphicon-minus"></i></a>
+        <a href="#spend" class="btn btn-default right">Spend <i class="glyphicon glyphicon-minus"></i></a>
     </div>
     <nav>
         <ul class="pagination">

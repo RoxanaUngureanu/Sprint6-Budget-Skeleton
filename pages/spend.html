@@ -1,10 +1,10 @@
 
-<body ng-controller="SpendController">
+<body ng-controller="SpendCtrl">
     <div class="container container-main">
         <div class="page-header">
             <h1>Spend</h1>
         </div>
-        <form class="form-horizontal">
+        <form class="form-horizontal" ng-submit="addTransaction()">
             <div class="form-group">
                 <label for="date" class="col-sm-4 control-label">Date &amp; Time</label>
                 <div class="col-sm-6 input-group date">
@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label">&nbsp;</label>
                 <div class="col-sm-6">
-                    <a href="#home" class="btn btn-default">Cancel</a>
+                    <a href="#index" class="btn btn-default">Cancel</a>
                     <button class="btn btn-primary">Add</button>
                 </div>
             </div>
