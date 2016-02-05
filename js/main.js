@@ -7,63 +7,54 @@ $(document).click(function() {
 var app = angular.module("budgetApp", ['ngRoute']);
 
 app.controller("MainController",function($scope){
-    $scope.data = [{
-        id: 1,
-        description: "Salariu",
-        amount: 2500,
-        date: "2016-02-01 14:58"
-    },
-    {
-        id: 2,
-        description: "Food",
-        amount: -80,
-        date: "2016-02-01 15:00"
-    }];
 
-    $scope.deleteRow = function(index){
-        //$scope.data.splice({id:$scope.id, description:$scope.description, amount:$scope.amount, date:$scope.date});
-        $scope.data.splice(index, 1);
-    };
 });
-    app.config(function($routeProvider){
+    app.config(function($routeProvider, $locationProvider){
+
+        $locationProvider.html5Mode({
+           enable:true,
+            requiredBase:false
+        });
         $routeProvider
-            .when("/",
-                {
-                    templateUrl: "home.html",
-                    controller: "BalanceController"
-                })
-            .when("/add.html",
+            .when("/add",
             {
                 templateUrl: "add.html",
                 controller: "SpendController"
             })
-            .when("/home.html",
+            .when("/home",
                 {
                     templateUrl: "home.html",
                     controller: "BalanceController"
                 })
-            .when("/receive.html",
+            .when("/receive",
                 {
                     templateUrl: "receive.html",
                     controller: "ReceiveController"
                 })
-            .when("/income.html",
-                {
-                    templateUrl: "income.html",
-                    controller: "BalanceController"
-                })
-            .when("/spendings.html",
-                {
-                    templateUrl: "spendings.html",
-                    controller: "BalanceController"
-                })
-    });
-    app.controller("BalanceController",function($scope){
+            .otherwise({
+                templateUrl: "home.html",
+                controller: "BalanceController"
+            });
 
     });
-//    app.controller("SpendController",function($scope){
-//
-//    });
-//    app.controller("ReceiveController",function($scope){
-//
-//});
+    app.controller("BalanceController",function($scope){
+        $scope.data = [{
+            id: 1,
+            description: "Salariu",
+            amount: 2500,
+            date: "2016-02-01 14:58"
+        },
+            {
+                id: 2,
+                description: "Food",
+                amount: -80,
+                date: "2016-02-01 15:00"
+            }];
+    });
+    app.controller("SpendController",function($scope){
+
+    });
+    app.controller("ReceiveController",function($scope){
+
+});
+
