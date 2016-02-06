@@ -56,7 +56,33 @@ app.controller("HomeCtrl",function($scope, TransactionStore){
             });
         });
     };
+});
 
+app.filter("TransactionFilter",function(){
+    return function(data, type){
+
+        var filterData = [];
+
+        angular.forEach(data, function (item) {
+
+            if(0 > item.amount && type === "spend"){
+                filterData.push(item);
+
+                return filterData;
+
+            }else if (0 < item.amount && type === "income"){
+                filterData.push(item);
+
+                return filterData;
+            }else if(type === "both"){
+                filterData.push(item);
+
+                return filterData;
+            }
+        });
+
+        return filterData;
+    }
 });
 
 app.controller("FormsCtrl",function($scope, $location, TransactionStore){
