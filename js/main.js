@@ -35,6 +35,16 @@ app.config(function($routeProvider, $locationProvider){
 
 app.controller("HomeCtrl",function($scope, TransactionStore){
     $scope.data = [];
+
+    $scope.totalBalance = function(){
+        var total = 0;
+        angular.forEach($scope.data, function (item) {
+            total = total + item.amount;
+        });
+
+        return total.toFixed(2);
+    };
+
     TransactionStore.getTransactionsByMonth('2016-02').then(function(data){
         $scope.data = data;
     });
