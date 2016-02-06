@@ -14,7 +14,7 @@
     <div class="table-container">
         <table class="table table-hover">
             <tbody>
-            <tr ng-repeat="item in data">
+            <tr ng-repeat="item in data" ng-class="0 < item.amount ? 'green' : 'red'">
                 <td>{{ item.date }}</td>
                 <td>{{ item.description }}</td>
                 <td>{{ item.amount | currency:""}}</td>

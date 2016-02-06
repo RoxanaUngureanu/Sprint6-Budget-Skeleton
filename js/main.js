@@ -1,10 +1,14 @@
 $(document).click(function() {
     $('.input-group.date').datetimepicker({
-        //format: 'YYYY-MM-DD HH:mm'
-        format: 'Do HH:mm'
+        format: 'YYYY-MM-DD HH:mm'
     });
 });
 var app = angular.module("budgetApp", ['ngRoute']);
+var emptyData = function(){
+    date = "";
+    amount = "";
+    description = "";
+};
 var pages = [
     {name: 'Home', url: ''},
     {name: 'Receive', url: 'receive'},
@@ -45,12 +49,16 @@ app.controller("HomeCtrl",function($scope, TransactionStore){
 
 });
 
-app.controller("SpendCtrl",function($scope){
+app.controller("FormsCtrl",function($scope, $location, TransactionStore){
+    $scope.formData = emptyData();
 
-});
-
-app.controller("ReceiveCtrl",function($scope){
-
+    $scope.addTransaction = function(){
+        $scope.formData.amount = ($location.path() === "/spend") ?
+            -$scope.formData.amount : $scope.formData.amount;
+        TransactionStore.addTransaction($scope.formData).then(function(){
+            $scope.formData = emptyData();
+        });
+    }
 });
 
 app.factory("TransactionStore", function($http,$q){

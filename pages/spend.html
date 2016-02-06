@@ -1,14 +1,14 @@
 
-<body ng-controller="SpendCtrl">
+<body>
     <div class="container container-main">
         <div class="page-header">
             <h1>Spend</h1>
         </div>
-        <form class="form-horizontal" ng-submit="addTransaction()">
+        <form class="form-horizontal" ng-controller="FormsCtrl" ng-submit="addTransaction()">
             <div class="form-group">
                 <label for="date" class="col-sm-4 control-label">Date &amp; Time</label>
                 <div class="col-sm-6 input-group date">
-                    <input type="text" class="form-control" id="date" placeholder="Date &amp; Time">
+                    <input type="text" ng-model="formData.date" class="form-control" id="date" placeholder="Date &amp; Time">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -17,13 +17,13 @@
             <div class="form-group">
                 <label for="amount" class="col-sm-4 control-label">Amount</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="amount" placeholder="Amount">
+                    <input type="text" ng-model="formData.amount" class="form-control" id="amount" placeholder="Amount">
                 </div>
             </div>
             <div class="form-group">
                 <label for="description" class="col-sm-4 control-label">Description</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="description" placeholder="Description">
+                    <input type="text" ng-model="formData.description" class="form-control" id="description" placeholder="Description">
                 </div>
             </div>
             <div class="form-group">
