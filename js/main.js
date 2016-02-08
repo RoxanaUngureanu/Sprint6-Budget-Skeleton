@@ -35,7 +35,7 @@ app.config(function($routeProvider, $locationProvider){
 
 app.controller("HomeCtrl",function($scope, TransactionStore){
     $scope.data = [];
-
+    $scope.type = "both";
     $scope.totalBalance = function(){
         var total = 0;
         angular.forEach($scope.data, function (item) {
